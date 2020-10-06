@@ -3,7 +3,7 @@
       <swiper>
           <swiper-item v-for="item in cbanner" :key="item.id">
               <a>
-                <img :src="item.image" alt="">
+                <img :src="item.image" alt="" @load="SwiperImgLoad">
               </a>
           </swiper-item>
       </swiper>
@@ -21,9 +21,22 @@ export default {
             }
         }
     },
+    data() {
+        return {
+            onceLoad: true
+        }
+    },
     components: {
         Swiper,
         SwiperItem
+    },
+    methods: {
+        SwiperImgLoad() {
+            if(this.onceLoad){
+                this.$emit('SwiperLoad')
+                this.onceLoad = false
+            }
+        }
     }
 }
 </script>
