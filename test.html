@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .app{
+            background: red;
+        }
+        .active{
+            background: blue;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <span>1</span>
+        <p>2</p>
+        <!-- 注释节点 -->
+    </div>
+</body>
+<script>
+    let app = document.getElementsByClassName('app')[0];
+    let span = document.getElementsByTagName('span')[0];
+    let text = document.createTextNode("嗨咯")
+    let p = document.createElement('p')
+    p.appendChild(text)
+    app.appendChild(p)
+    p.setAttribute('class', 'active')
+    span.setAttribute('style', 'background:green')
+    
+</script>
+</html>

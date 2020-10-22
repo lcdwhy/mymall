@@ -47,7 +47,8 @@ export default {
       currentType: 'pop',
       isShowScroll: false,
       tabOffsetTop:0,
-      isControlShow: false
+      isControlShow: false,
+      saveY: 0
     }
   },
   components: {
@@ -73,15 +74,19 @@ export default {
     this.getHomeGoods('pop')
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
-
-   
-  
   },
   mounted() {
     const refresh = debounce(this.$refs.warpper.refresh,200)
     this.$bus.$on('refreshClick', () => {
       refresh()
     })
+  },
+  activated() {
+    this.$refs.warpper.scrollTo(0,this.saveY,0)
+    this.$refs.warpper.refresh()
+  },
+  deactivated() {
+    this.saveY = this.$refs.warpper.getScrollY()
   },
   methods: {
     /* 

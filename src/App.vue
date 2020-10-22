@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <main-tabbar  ></main-tabbar>
-    <router-view v-if="isRouterAlive"></router-view>
+    <keep-alive exclude="Detail">
+      <router-view v-if="isRouterAlive"></router-view>
+    </keep-alive>
   </div>
 </template>
 <script>
